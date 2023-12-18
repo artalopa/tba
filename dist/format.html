@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilih Format Laporan</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+
+  <body class="bg-[url('img/bg.svg')] bg-cover bg-center">
+    <div class="w-full min-h-screen grid place-content-center p-5">
+      <div class="flex flex-col gap-20">
+        <h1 class="font-bold text-3xl md:text-4xl text-center">
+          Pilih Format Laporan
+        </h1>
+        <div
+          class="flex flex-wrap gap-4 [&>a]:min-w-fit [&>a]:bg-white justify-center"
+        >
+          <a href="#" id="formal" class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Laporan Formal</a
+          >
+          <a href="#" id="nonFormal" class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Laporan Non-formal</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        // Assuming "?jenis=a&format=1"
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var currentUrl = $(location).attr("href");
+
+        // console.log(urlParams.has("jenis")); // true
+        console.log(urlParams.get("jenis")); // "jenis"
+        console.log(urlParams.toString());
+        console.log(currentUrl);
+
+        var formal = "opsi.html?" + urlParams.toString() + "&format=formal";
+        var nonFormal =
+          "opsi.html?" + urlParams.toString() + "&format=nonformal";
+
+        $("#formal").attr("href", formal);
+        $("#nonFormal").attr("href", nonFormal);
+      });
+    </script>
+  </body>
+</html>

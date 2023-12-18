@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit/Download Template Laporan</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+
+  <body class="bg-[url('img/bg.svg')] bg-cover bg-center">
+    <div class="w-full min-h-screen grid place-content-center p-5">
+      <div class="flex flex-col gap-20">
+        <h1 class="font-bold text-3xl md:text-4xl text-center">
+          Edit/Download Template Laporan
+        </h1>
+        <div
+          class="flex flex-wrap gap-4 [&>a]:min-w-fit [&>a]:bg-white justify-center"
+        >
+          <a href="#" id="edit" class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Edit Template</a
+          >
+          <a href="#" id="download" class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Download Template</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        // Assuming "?jenis=a&format=1"
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var jenis = urlParams.get("jenis");
+        var format = urlParams.get("format");
+        // var currentUrl = $(location).attr("href");
+
+        console.log(jenis);
+        console.log(format);
+        console.log(urlParams.toString());
+
+        var editUrl = "edit.html?" + urlParams.toString();
+
+        $("#edit").attr("href", editUrl);
+        $("#download").click(function (e) {
+          e.preventDefault();
+          switch (true) {
+            case jenis === "kegiatan" && format === "formal":
+              console.log("kegiatan formal");
+              var download_url = "template/laporan_kegiatan_formal.docx";
+              break;
+            case jenis === "kegiatan" && format === "nonformal":
+              console.log("kegiatan non formal");
+              var download_url = "template/laporan_kegiatan_non_formal.docx";
+              break;
+            case jenis === "praktikum" && format === "formal":
+              console.log("praktikum formal");
+              var download_url = "template/laporan_praktikum_formal.docx";
+              break;
+            case jenis === "praktikum" && format === "nonformal":
+              console.log("praktikum non formal");
+              var download_url = "template/laporan_praktikum_non_formal.docx";
+              break;
+          }
+          var nextPage = "final.html";
+
+          var newDownloadLink = document.createElement("a");
+          newDownloadLink.download = "";
+          newDownloadLink.href = download_url;
+          newDownloadLink.click();
+
+          window.location = nextPage;
+          window.focus();
+        });
+      });
+    </script>
+  </body>
+</html>

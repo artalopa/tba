@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilih Jenis Laporan</title>
+    <link rel="stylesheet" href="output.css" />
+  </head>
+
+  <body class="bg-[url('img/bg.svg')] bg-cover bg-center">
+    <div class="w-full min-h-screen grid place-content-center p-5">
+      <div class="flex flex-col gap-20">
+        <h1 class="font-bold text-3xl md:text-4xl text-center">
+          Pilih Jenis Laporan
+        </h1>
+        <div
+          class="flex flex-wrap gap-4 [&>a]:min-w-fit [&>a]:bg-white justify-center"
+        >
+          <a
+            href="format.html?jenis=kegiatan"
+            class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Laporan Kegiatan</a
+          >
+          <a
+            href="format.html?jenis=praktikum"
+            class="p-5 md:p-10 rounded-lg shadow-lg"
+            >Laporan Praktikum</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
